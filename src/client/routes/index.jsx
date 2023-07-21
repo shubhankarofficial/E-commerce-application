@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {OrderRoute} from './orders'
+
 import {
     BrowserRouter,
     Route,
@@ -32,7 +34,7 @@ export const MainRoute = () => (
 
         </Route>
         <Route path= "/order" exact>
-            Here we do orders!
+            <OrderRoute />
 
 
         </Route>
