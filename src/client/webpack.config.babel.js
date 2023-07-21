@@ -7,6 +7,9 @@ module.exports = {
         filename: 'main.js',
         path: resolve(__dirname, "..", "..", "bin")
     },
+    resolve: {
+        extensions: ['.js', '.jsx']
+    },
     module: {
         rules: [
             {
@@ -28,7 +31,10 @@ module.exports = {
         static: {
 
         directory: resolve(__dirname, "..", "..", "public")
-        }
+        
+        
+        },
+        historyApiFallback: true
     }
 
 }

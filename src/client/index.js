@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import {MainRoute} from './routes';
+
 const App = () => (
     <div>
-        HELLO WORLD FROM REACT!
+        <MainRoute />
     </div>
 )
 
