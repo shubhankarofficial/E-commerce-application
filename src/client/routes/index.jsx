@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {OrderRoute} from './orders'
+import { WrapperOrderRoute } from './orders'
 
 import {
     BrowserRouter,
@@ -34,7 +34,7 @@ export const MainRoute = () => (
 
         </Route>
         <Route path= "/order" exact>
-            <OrderRoute />
+            <WrapperOrderRoute />
 
 
         </Route>
