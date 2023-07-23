@@ -3,6 +3,7 @@ import createSagaMiddleware from 'redux-saga';
 import { defaultState } from './defaultState';
 
 import { priceCalculation } from '../sagas/priceCalculation'; 
+import { cartCreation } from '../sagas/cartCreation';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -28,6 +29,12 @@ export const store = createStore((state = defaultState, action)=> {
                 }
             }
         }
+        case "SET_CART_ID": {
+            return {
+                ...state,
+                cartId: action.cartId
+            }
+        }
         default:
             return state;
     }
@@ -43,3 +50,4 @@ applyMiddleware(
 ));
 
 sagaMiddleware.run(priceCalculation);
+sagaMiddleware.run(cartCreation);

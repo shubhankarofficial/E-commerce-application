@@ -9,9 +9,13 @@ export const OrderRoute= ({
     flavor,
     size,
     price,
+    cartId,
+
     handleChangeOrderDetail
 }) => (
     <div>
+        { cartId ? <div>
+
         <h2>
             Place your Order!!
 
@@ -110,8 +114,26 @@ export const OrderRoute= ({
             Checkout Here!
         </button>
         </Link>
+   
+    
+
+    </div> :
+        <div>
+
+        <h2>
+
+            You have not started an order!
+        </h2>
+        <Link to = "/">
+            Start Order!
+        </Link>
+        </div>
+        }
     </div>
 )
+
+    
+       
 
 export const WrapperOrderRoute = connect(
     function mstp(state){
@@ -120,7 +142,8 @@ export const WrapperOrderRoute = connect(
 
         return {
             ...state.orderDetails, 
-            price: state.orderPricing.totalPrice
+            price: state.orderPricing.totalPrice,
+            cartId: state.cartId
         }
 
     },

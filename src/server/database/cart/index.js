@@ -11,7 +11,7 @@ export async function CreateCart() {
         }
     });
     console.info("Created cart with ID",cartId);
-    return cartId;
+    return { cartId };
 
 
 

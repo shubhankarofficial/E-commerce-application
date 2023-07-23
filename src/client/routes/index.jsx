@@ -1,6 +1,8 @@
 import React from 'react';
 
 import { WrapperOrderRoute } from './orders'
+import { WrappedWelcomeRoute } from './welcome';
+
 
 import {
     BrowserRouter,
@@ -17,20 +19,9 @@ export const MainRoute = () => (
         <BrowserRouter>
 
         <Route path= "/" exact>
-            <div>
-                <p>
-                    Please start a new order!
-                </p>
 
-                <Link to= "/order">
-
-                
-                <button>
-                    Start Order
-                </button>
-                </Link>
-            </div>
-
+            <WrappedWelcomeRoute />
+            
 
         </Route>
         <Route path= "/order" exact>
