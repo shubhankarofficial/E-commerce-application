@@ -5,5 +5,8 @@ export const defaultState = {
         flavor: "STRAWBERRY",
         ornament: "NONE",
         message: "Happy Birthday!"
+    },
+    orderPricing: {
+        
     }
 }

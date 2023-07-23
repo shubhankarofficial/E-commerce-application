@@ -16,3 +16,5 @@ const App = () => (
 ReactDOM.render(< App />, document.querySelector("#Container"));
 
 console.log("The state?", store.getState());
+
+store.dispatch({type: "INIT"});

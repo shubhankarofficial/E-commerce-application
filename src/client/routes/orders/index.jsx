@@ -8,6 +8,7 @@ export const OrderRoute= ({
     ornament,
     flavor,
     size,
+    price,
     handleChangeOrderDetail
 }) => (
     <div>
@@ -98,6 +99,12 @@ export const OrderRoute= ({
             onChange= {(e)=> handleChangeOrderDetail("message", e.target.value)}
             />
         </div>
+
+        <div>
+            <h2>
+                ${price}
+            </h2>
+        </div>
         <Link to= "./checkout"> 
         <button>
             Checkout Here!
@@ -111,7 +118,10 @@ export const WrapperOrderRoute = connect(
 
         console.log("Here's the state", state);
 
-        return {...state.orderDetails}
+        return {
+            ...state.orderDetails, 
+            price: state.orderPricing.totalPrice
+        }
 
     },
     function mdtp(dispatch){

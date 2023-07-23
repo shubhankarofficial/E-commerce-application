@@ -1,5 +1,10 @@
-import {createStore } from 'redux';
+import {createStore, applyMiddleware } from 'redux';
+import createSagaMiddleware from 'redux-saga';
 import { defaultState } from './defaultState';
+
+import { priceCalculation } from '../sagas/priceCalculation'; 
+
+const sagaMiddleware = createSagaMiddleware();
 
 export const store = createStore((state = defaultState, action)=> {
 
@@ -14,6 +19,15 @@ export const store = createStore((state = defaultState, action)=> {
                 }
             }
         }
+        case "UPDATE_ORDER_PRICING": {
+            return {
+                ...state,
+                orderPricing: {
+                    fetchStatus: "FETCHED",
+                    totalPrice: action.price
+                }
+            }
+        }
         default:
             return state;
     }
@@ -21,4 +35,11 @@ export const store = createStore((state = defaultState, action)=> {
     //return state;
 
 
-});
+},
+applyMiddleware(
+
+    sagaMiddleware
+
+));
+
+sagaMiddleware.run(priceCalculation);
