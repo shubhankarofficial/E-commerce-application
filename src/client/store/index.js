@@ -5,6 +5,8 @@ import { defaultState } from './defaultState';
 import { priceCalculation } from '../sagas/priceCalculation'; 
 import { cartCreation } from '../sagas/cartCreation';
 
+import { submitCheckout } from '../sagas/submitCheckout';
+
 const sagaMiddleware = createSagaMiddleware();
 
 export const store = createStore((state = defaultState, action)=> {
@@ -60,3 +62,4 @@ applyMiddleware(
 
 sagaMiddleware.run(priceCalculation);
 sagaMiddleware.run(cartCreation);
+sagaMiddleware.run(submitCheckout);
