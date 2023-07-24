@@ -2,6 +2,7 @@ import React from 'react';
 
 import { WrapperOrderRoute } from './orders'
 import { WrappedWelcomeRoute } from './welcome';
+import { WrapperCheckoutRoute } from './checkout';
 
 
 import {
@@ -26,6 +27,11 @@ export const MainRoute = () => (
         </Route>
         <Route path= "/order" exact>
             <WrapperOrderRoute />
+
+
+        </Route>
+        <Route path= "/checkout" exact>
+            <WrapperCheckoutRoute />
 
 
         </Route>

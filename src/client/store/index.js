@@ -35,6 +35,15 @@ export const store = createStore((state = defaultState, action)=> {
                 cartId: action.cartId
             }
         }
+        case "MODIFY_CREDIT_CARD_DETAILS" : {
+            return {
+                ...state,
+                creditCardDetails: {
+                    ... state.creditCardDetails,
+                    [action.property] : action.value
+                }
+            }
+        }
         default:
             return state;
     }
