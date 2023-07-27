@@ -8,6 +8,7 @@ import { ErrorDisplay } from '../../components/ErrorDisplay';
 const mstp = (state) => ({
     totalPrice: state.orderPricing.totalPrice,
     creditCardErrors: state.creditCardErrors,
+    checkoutStatus: state.checkoutStatus,
     ... state.orderDetails,
     ... state.creditCardDetails,
 
@@ -36,6 +37,7 @@ export const WrapperCheckoutRoute = connect(mstp, mdtp)(({
     securityField,
 
     creditCardErrors,
+    checkoutStatus,
 
     handleCreditCardDetailsChange,
     handleSubmitCheckout
@@ -79,7 +81,11 @@ export const WrapperCheckoutRoute = connect(mstp, mdtp)(({
             </tbody>
         </table>
 
-        <div>
+        {checkoutStatus.success ? <div>
+            <h2>
+                Congrats! Your Cake is on its way!!
+            </h2>
+        </div> : <div>
             <h2>
                 Checkout
             </h2>
@@ -117,7 +123,9 @@ export const WrapperCheckoutRoute = connect(mstp, mdtp)(({
                 </div>
                 <button type="submit">Checkout</button>
             </form>
-        </div>
+        </div>}
+
+        
 
     </div>
 ))

@@ -19,6 +19,9 @@ export const defaultState = {
     creditCardErrors: {
 
         
+    },
+    checkoutStatus: {
+        success: false
     }
 
 }

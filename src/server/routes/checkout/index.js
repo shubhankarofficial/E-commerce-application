@@ -1,6 +1,7 @@
 import { Router} from 'express';
 
 import { validateCreditCard } from '../../utility/validation';
+import { checkoutCreditCard } from '../../routines/checkoutCreditCard';
 
 export const Checkout = Router();
 
@@ -19,7 +20,9 @@ Checkout.post('/credit',async({body},res) => {
     if(valid) {
 
 
-        res.status(501).json({message: "NOT_IMPLEMENTED"});
+        //res.status(501).json({message: "NOT_IMPLEMENTED"});
+        await checkoutCreditCard({creditCardDetails});
+        res.status(200).json({success: true});
 
     }else {
 

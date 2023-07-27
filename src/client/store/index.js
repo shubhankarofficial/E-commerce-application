@@ -52,6 +52,16 @@ export const store = createStore((state = defaultState, action)=> {
                 creditCardErrors: action.errors || {}
             }
         }
+        case "CREDIT_CARD_TRANSACTION_SUCCESS" : {
+            return {
+
+                ... state,
+                checkoutStatus: {
+                    ... state.checkoutStatus,
+                    success: true
+                }
+            }
+        }
         default:
             return state;
     }

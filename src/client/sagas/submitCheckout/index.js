@@ -20,5 +20,10 @@ export function* submitCheckout() {
 
         yield put ({ type: "SET_CREDIT_CARD_ERRORS", errors: checkoutResponse.errors});
 
+        if(checkoutResponse.success) {
+
+            yield put({type: "CREDIT_CARD_TRANSACTION_SUCCESS"});
+        }
+
     });
 }
