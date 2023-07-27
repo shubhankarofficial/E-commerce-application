@@ -46,6 +46,12 @@ export const store = createStore((state = defaultState, action)=> {
                 }
             }
         }
+        case "SET_CREDIT_CARD_ERRORS" :{
+            return {
+                ... state,
+                creditCardErrors: action.errors || {}
+            }
+        }
         default:
             return state;
     }

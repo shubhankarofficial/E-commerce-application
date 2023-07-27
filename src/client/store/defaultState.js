@@ -15,6 +15,10 @@ export const defaultState = {
         cardNumber: "1234567812345678",
         securityField: "999"
 
+    },
+    creditCardErrors: {
+
+        
     }
 
 }

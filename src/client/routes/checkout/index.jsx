@@ -1,11 +1,16 @@
 import React from 'react';
-
 import { connect } from 'react-redux';
+
+import { ErrorDisplay } from '../../components/ErrorDisplay';
+
+
 
 const mstp = (state) => ({
     totalPrice: state.orderPricing.totalPrice,
+    creditCardErrors: state.creditCardErrors,
     ... state.orderDetails,
-    ... state.creditCardDetails
+    ... state.creditCardDetails,
+
 });
 
 const mdtp = (dispatch) => ({
@@ -29,11 +34,15 @@ export const WrapperCheckoutRoute = connect(mstp, mdtp)(({
     address,
     cardNumber,
     securityField,
+
+    creditCardErrors,
+
     handleCreditCardDetailsChange,
     handleSubmitCheckout
 
 })=>(
     <div>
+        {console.log("IN CHECKOUT:" , creditCardErrors)}
 
         <h2>
             Your Order: ${totalPrice}
@@ -83,24 +92,28 @@ export const WrapperCheckoutRoute = connect(mstp, mdtp)(({
                         Name on Card
                     </label>
                     <input type="text" value={nameOnCard} onChange={(e) => handleCreditCardDetailsChange("nameOnCard", e.target.value)}/>
+                    <ErrorDisplay formErrors= {creditCardErrors["nameOnCard"]} />
                 </div>
                 <div>
                     <label htmlFor="">
                         Address
                     </label>
                     <input type="text" value={address} onChange={(e) => handleCreditCardDetailsChange("address", e.target.value)}/>
+                    <ErrorDisplay formErrors= {creditCardErrors["address"]} />
                 </div>
                 <div>
                     <label htmlFor="">
                         Card Number
                     </label>
                     <input type="text" value={cardNumber} onChange={(e) => handleCreditCardDetailsChange("cardNumber", e.target.value)}/>
+                    <ErrorDisplay formErrors= {creditCardErrors["cardNumber"]} />
                 </div>
                 <div>
                     <label htmlFor="">
                         Security Field
                     </label>
                     <input type="text" value={securityField} onChange={(e) => handleCreditCardDetailsChange("securityField", e.target.value)}/>
+                    <ErrorDisplay formErrors= {creditCardErrors["securityField"]} />
                 </div>
                 <button type="submit">Checkout</button>
             </form>

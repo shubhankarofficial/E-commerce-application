@@ -1,4 +1,4 @@
-import { takeEvery, select } from "redux-saga/effects";
+import { takeEvery, select, put } from "redux-saga/effects";
 
 export function* submitCheckout() {
 
@@ -14,9 +14,11 @@ export function* submitCheckout() {
             body: JSON.stringify({ cartId, creditCardDetails, orderDetails})
         })
 
-        const { message } = yield checkoutRequest.json();
+        const checkoutResponse  = yield checkoutRequest.json();
 
-        console.log(message);
+        console.log(checkoutResponse);
+
+        yield put ({ type: "SET_CREDIT_CARD_ERRORS", errors: checkoutResponse.errors});
 
     });
 }
