@@ -4,7 +4,8 @@ export function* submitCheckout() {
 
     yield takeEvery("SUBMIT_CHECKOUT", function*(){
 
-        const {cartId, orderDetails, creditCardDetails }= yield select();
+        try {
+            const {cartId, orderDetails, creditCardDetails }= yield select();
 
         const checkoutRequest = yield fetch("http://localhost:7777/checkout/credit", {
             method: "POST",
@@ -25,5 +26,11 @@ export function* submitCheckout() {
             yield put({type: "CREDIT_CARD_TRANSACTION_SUCCESS"});
         }
 
+
+        } catch (e) {
+            console.error("DANGER WILL ROBINSON!");
+        }
+
+        
     });
 }

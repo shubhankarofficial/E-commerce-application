@@ -10,7 +10,7 @@ Checkout.post('/credit',async({body},res) => {
 
     console.log("REQUEST BODY?", body);
     console.log("ACCESSING CREDIT ROUTE");
-    let { creditCardDetails } = body;
+    let { creditCardDetails, orderDetails } = body;
 
     console.log(creditCardDetails);
     const { errors, valid } = validateCreditCard(creditCardDetails);
@@ -21,7 +21,7 @@ Checkout.post('/credit',async({body},res) => {
 
 
         //res.status(501).json({message: "NOT_IMPLEMENTED"});
-        await checkoutCreditCard({creditCardDetails});
+        await checkoutCreditCard({creditCardDetails, orderDetails});
         res.status(200).json({success: true});
 
     }else {
